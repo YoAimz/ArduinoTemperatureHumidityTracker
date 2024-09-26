@@ -1,7 +1,6 @@
-package com.example.guppuppgift.Controller;
+package com.example.gruppuppgift.Controller;
 
-import com.example.guppuppgift.Model.SensorReading;
-import com.example.guppuppgift.Services.SensorReadingService;
+import com.example.gruppuppgift.Services.SensorReadingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

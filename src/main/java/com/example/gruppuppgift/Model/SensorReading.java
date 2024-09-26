@@ -1,4 +1,4 @@
-package com.example.guppuppgift.Model;
+package com.example.gruppuppgift.Model;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;

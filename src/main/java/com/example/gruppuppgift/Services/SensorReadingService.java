@@ -1,7 +1,7 @@
-package com.example.guppuppgift.Services;
+package com.example.gruppuppgift.Services;
 
-import com.example.guppuppgift.Model.SensorReading;
-import com.example.guppuppgift.Repository.SensorReadingRepo;
+import com.example.gruppuppgift.Model.SensorReading;
+import com.example.gruppuppgift.Repository.SensorReadingRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;

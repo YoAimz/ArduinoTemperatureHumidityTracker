@@ -1,6 +1,6 @@
-package com.example.guppuppgift.Repository;
+package com.example.gruppuppgift.Repository;
 
-import com.example.guppuppgift.Model.SensorReading;
+import com.example.gruppuppgift.Model.SensorReading;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,4 +1,4 @@
-package com.example.guppuppgift;
+package com.example.gruppuppgift;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
-@EnableMongoRepositories(basePackages = "com.example.guppuppgift.Repository")
+@EnableMongoRepositories(basePackages = "com.example.gruppuppgift.Repository")
 @EnableScheduling
 public class GuppuppgiftApplication {
 
