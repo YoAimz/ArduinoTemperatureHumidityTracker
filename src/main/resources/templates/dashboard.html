@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sensor Dashboard</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.0/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+</head>
+<body>
+<h1>Sensor Temperature and Humidity Dashboard</h1>
+
+<h2>Latest Reading</h2>
+<div th:if="${latestReading != null}">
+    <p>Temperature: <span id="temperature" th:text="${latestReading.temperature}"></span>°C</p>
+    <p>Humidity: <span id="humidity" th:text="${latestReading.humidity}"></span>%</p>
+    <p>Timestamp: <span id="timestamp" th:text="${latestReading.timestamp}"></span></p>
+</div>
+<div th:if="${latestReading == null}">
+    <p>No readings available</p>
+</div>
+
+<h2>Reading History</h2>
+<table id="historyTable">
+    <thead>
+    <tr>
+        <th>Timestamp</th>
+        <th>Temperature (°C)</th>
+        <th>Humidity (%)</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="reading : ${history}">
+        <td th:text="${reading.timestamp}"></td>
+        <td th:text="${reading.temperature}"></td>
+        <td th:text="${reading.humidity}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<script th:src="@{/js/dashboardScript.js}"></script>
+</body>
+</html>
