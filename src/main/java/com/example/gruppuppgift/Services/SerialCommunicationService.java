@@ -2,6 +2,7 @@ package com.example.gruppuppgift.Services;
 
 import com.example.gruppuppgift.Model.SensorReading;
 import com.fazecast.jSerialComm.SerialPort;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;

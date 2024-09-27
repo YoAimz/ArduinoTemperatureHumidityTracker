@@ -2,40 +2,74 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sensor Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.0/sockjs.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-<body>
-<h1>Sensor Temperature and Humidity Dashboard</h1>
+<body class="bg-gray-100">
+<div class="container mx-auto px-4 py-8">
+    <h1 class="text-4xl font-extrabold mb-8 text-center text-gray-800">Temperature and Humidity Meter</h1>
 
-<h2>Latest Reading</h2>
-<div th:if="${latestReading != null}">
-    <p>Temperature: <span id="temperature" th:text="${latestReading.temperature}"></span>°C</p>
-    <p>Humidity: <span id="humidity" th:text="${latestReading.humidity}"></span>%</p>
-    <p>Timestamp: <span id="timestamp" th:text="${latestReading.timestamp}"></span></p>
-</div>
-<div th:if="${latestReading == null}">
-    <p>No readings available</p>
-</div>
+    <!-- main layout grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- Latest Reading Card -->
+        <div class="lg:col-span-1 bg-white rounded-lg shadow-lg p-6">
+            <h2 class="text-2xl font-semibold mb-4 text-gray-700">Latest Reading</h2>
+            <div th:if="${latestReading != null}" class="space-y-4">
+                <div class="grid grid-cols-2 gap-6">
+                    <div>
+                        <p class="text-gray-500">Temperature</p>
+                        <p class="text-3xl font-bold text-gray-800"><span id="temperature" th:text="${latestReading.temperature}">--</span>°C</p>
+                    </div>
+                    <div>
+                        <p class="text-gray-500">Humidity</p>
+                        <p class="text-3xl font-bold text-gray-800"><span id="humidity" th:text="${latestReading.humidity}">--</span>%</p>
+                    </div>
+                </div>
+                <p class="text-sm text-gray-400">Timestamp: <span id="timestamp" th:text="${latestReading.timestamp}">--</span></p>
+            </div>
+            <div th:if="${latestReading == null}" class="text-gray-500">
+                <p>No readings available</p>
+            </div>
+            <p class="mt-2 text-lg">
+                <span class="font-semibold text-gray-600">Sensor Status:</span>
+                <span id="sensorStatus" class="font-bold text-gray-700">--</span>
+            </p>
+        </div>
 
-<h2>Reading History</h2>
-<table id="historyTable">
-    <thead>
-    <tr>
-        <th>Timestamp</th>
-        <th>Temperature (°C)</th>
-        <th>Humidity (%)</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="reading : ${history}">
-        <td th:text="${reading.timestamp}"></td>
-        <td th:text="${reading.temperature}"></td>
-        <td th:text="${reading.humidity}"></td>
-    </tr>
-    </tbody>
-</table>
+        <!-- Sensor Data Chart Card -->
+        <div class="lg:col-span-2 bg-white rounded-lg shadow-lg p-6">
+            <h2 class="text-2xl font-semibold mb-4 text-gray-700">Sensor Data Chart</h2>
+            <canvas id="sensorChart" class="w-full h-96"></canvas>
+        </div>
+    </div>
+
+    <!-- Reading History Table -->
+    <div class="mt-8 bg-white rounded-lg shadow-lg p-6">
+        <h2 class="text-2xl font-semibold mb-4 text-gray-700">Reading History</h2>
+        <div class="overflow-x-auto">
+            <table class="min-w-full table-auto">
+                <thead>
+                <tr class="bg-gray-200">
+                    <th class="px-4 py-2 text-gray-600">Timestamp</th>
+                    <th class="px-4 py-2 text-gray-600">Temperature (°C)</th>
+                    <th class="px-4 py-2 text-gray-600">Humidity (%)</th>
+                </tr>
+                </thead>
+                <tbody id="historyTableBody" class="text-center">
+                <tr th:each="reading : ${history}">
+                    <td th:text="${reading.timestamp}" class="px-4 py-2"></td>
+                    <td th:text="${reading.temperature}" class="px-4 py-2"></td>
+                    <td th:text="${reading.humidity}" class="px-4 py-2"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 
 <script th:src="@{/js/dashboardScript.js}"></script>
 </body>
