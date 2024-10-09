@@ -12,9 +12,9 @@ TempHum IoT Dashboard is a comprehensive IoT solution for real-time monitoring o
 - 📱 Responsive web design for access from various devices
 
 ### Screenshots:
-<img src="https://github.com/user-attachments/assets/49ab53e2-44a0-41da-930b-1ce42781f0b6" alt="Temp Hemp PIC" width="600">
+<img src="https://github.com/user-attachments/assets/49ab53e2-44a0-41da-930b-1ce42781f0b6" alt="Temp Hemp PIC" width="900">
 
-<img src="https://github.com/user-attachments/assets/939f757a-eff6-441e-9d92-dfce79f5a06c" alt="Temp Hemp Arduino Circuit" width="600" height="400">
+<img src="https://github.com/user-attachments/assets/939f757a-eff6-441e-9d92-dfce79f5a06c" alt="Temp Hemp Arduino Circuit" width="600" height="600">
 
 
 ### Tech Stack:
